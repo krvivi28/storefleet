@@ -41,6 +41,7 @@ const producSchema = new mongoose.Schema(
       type: String,
       required: [true, "product category is required"],
       enum: [
+        "Mobile",
         "Electronics",
         "Clothing",
         "Home & Garden",
@@ -85,6 +86,11 @@ const producSchema = new mongoose.Schema(
         },
       },
     ],
+    createdBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
     createdAt: {
       type: Date,
       default: Date.now(),
@@ -93,4 +99,5 @@ const producSchema = new mongoose.Schema(
   timeStamp
 );
 
-export default mongoose.model("Product", producSchema);
+const ProductModel = mongoose.model("Product", producSchema);
+export default ProductModel;
