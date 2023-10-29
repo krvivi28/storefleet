@@ -73,7 +73,11 @@ const producSchema = new mongoose.Schema(
     reviews: [
       {
         user: {
-          // type: mongoose.Schema.ObjectId,
+          type: mongoose.Schema.ObjectId,
+          type: String,
+          required: true,
+        },
+        name: {
           type: String,
           required: true,
         },

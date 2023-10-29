@@ -8,6 +8,7 @@ import {
 } from "./middlewares/errorHandlerMiddleware.js";
 import userRoutes from "./src/user/routes/user.routes.js";
 import cookieParser from "cookie-parser";
+import orderRoutes from "./src/order/routes/order.routes.js";
 
 const configPath = path.resolve("backend", "config", "uat.env");
 // dotenv.config({ path: "backend/config.uat.env" });
@@ -18,9 +19,13 @@ app.use(express.json());
 app.use(cookieParser());
 // app.use(handleUncaughtError);
 
+// setting staic path for public folder
+app.use(express.static(path.resolve("backend", "public")));
+
 // configure routes
 app.use("/api/storefleet/product", productRoutes);
 app.use("/api/storefleet/user", userRoutes);
+app.use("/api/storefleet/order", orderRoutes);
 
 // errorHandlerMiddleware
 app.use(errorHandlerMiddleware);
