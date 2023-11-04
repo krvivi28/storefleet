@@ -25,6 +25,7 @@ export const createNewUser = async (req, res, next) => {
     //   return next(new ErrorHandler(400, "invalid details!"));
     // }
   } catch (err) {
+    console.log(err);
     if (err.code === 11000) {
       const message = `${Object.keys(err.keyValue)} already registered`;
       err = new ErrorHandler(400, message);
